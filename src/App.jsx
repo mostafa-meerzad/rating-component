@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { motion } from 'framer-motion';
 import { Star } from "./icons";
-import illustration from "./illustration-thank-you.svg";
+import illustration from "./illustration.svg";
 
 
 const App = () => {
@@ -43,9 +43,9 @@ const Rating = ({ rating, setRating, setSubmitted }) => {
   }
   return (
     <div className="rating">
-      <div className="rating__star">
+      <motion.div whileHover={{scale:1.1}} className="rating__star">
         <Star />
-      </div>
+      </motion.div>
       <h2 className="rating__title"> How did we do?</h2>
       <p className="rating__desc">
         {" "}Please let us know how we did with your support request. All
@@ -53,7 +53,7 @@ const Rating = ({ rating, setRating, setSubmitted }) => {
       </p>
 
       <form action="#" onSubmit={handleSubmit}>
-        <motion.div variants={btnContainerVariants} initial="hidden" animate="visible" transition={{staggerChildren:.200}} className="rating__btn-container">
+        <motion.div variants={btnContainerVariants} initial="hidden" animate="visible" transition={{staggerChildren:.150}} className="rating__btn-container">
         <motion.input variants={btnVariants}
           type="button"
           onClick={handleActive}
@@ -94,7 +94,7 @@ const Rating = ({ rating, setRating, setSubmitted }) => {
 const Thanks = ({ rating }) => {
   return (
     <motion.div initial={{scale:0}} animate={{scale:1}} className="rating thanks">
-      <object type="image/svg+xml" data={illustration} />
+      <object type="image/svg+xml" data={illustration} className={"thanks__illustration"}/>
       <p className="thanks__rated">
         You selected {rating} out of 5
       </p>
